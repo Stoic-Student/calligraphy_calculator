@@ -9,9 +9,9 @@
 // Array met karakters op basis van breedte
 // Getal na array naam = aantal strokes per character
 const karakter1 = ["i", "j", "1", "!", ".", ","]
-const karakter2_5 = ["l", "t", "I"]
+const karakter2_5 = ["f", "l", "t", "I"]
 const karakter3 = [" "]
-const karakter3_5 = ["a", "b", "c", "d", "e", "f", "g", "h", "k", "n", "o", "p", "q", "r", "s", "u", "v", "0", "2", "3", "4", "5", "6", "7", "8", "9", "?", "-"]
+const karakter3_5 = ["a", "b", "c", "d", "e", "g", "h", "k", "n", "o", "p", "q", "r", "s", "u", "v", "0", "2", "3", "4", "5", "6", "7", "8", "9", "?", "-"]
 const karakter4_5 = ["U", "V", "W"]
 const karakter5 = ["&", "J"]
 const karakter5_5 = ["N", "X"]
