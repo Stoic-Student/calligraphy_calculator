@@ -117,14 +117,23 @@ function berekenZinslengte() {
   // Nee:
     // Alert met welk karakter niet voorkomt in map
 
-  for (i=0; i<zin.length; i++) {
-    if (karakterMap.has(zin.charAt(i))) {
-      zinLengte += (karakterMap.get(zin.charAt(i))*penNib);
-      zinBerekening += (karakterMap.get(zin.charAt(i))*penNib + " ");
-    } else {
-      alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
-    }
-  };
+// Test berekening afronden karakterbreedtes naar .5 of .0
+for (i = 0; i < zin.length; i++) {
+  if (karakterMap.has(zin.charAt(i))) {
+    // Bereken breedte character bij gekozen pen nib
+    let charBreedte = karakterMap.get(zin.charAt(i)) * penNib;
+    // Controleer of characterbreedte afgerond moet worden
+    if ((charBreedte * 10) % 1 !== 0) {
+      // Voeg 0.25 toe aan charbreedte als niet .5 of .0
+      charBreedte += 0.25;
+    };
+
+    zinLengte += charBreedte;
+    zinBerekening += (charBreedte + "_");
+  } else {
+    alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
+  }
+};
 
   // Voeg letter ruimte toe (# karakters -1) * letterAfstand
   zinLengte += letterafstand * (zin.length - 1);
