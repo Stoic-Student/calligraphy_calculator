@@ -66,6 +66,8 @@ let letterAfstand = 2.5
 
 let zinLetterAfstand = 0
 
+let penNibKeuze = ""
+
 // Tekst van zin
 let zin = ""
 
@@ -83,22 +85,26 @@ let zinBerekening = ""
 // ZINSLENGTE BEREKENING VAN INGEVOERDE TEKST
 // ----------------------------------------------------
 
-$("#knopZinBerekenen").on("click", function() {
-  // ----------------------------------------------------
-  // VARIABELEN OPSLAAN UIT FORMULIER
-
+function resetInvoer() {
   // Reset zinlengte en berekening
   zinLengte = 0;
   zinBerekening = "";
+};
 
+// ----------------------------------------------------
+// VARIABELEN OPSLAAN UIT FORMULIER
+
+function opslaanInvoer() {
   // Sla ingevulde waarden uit formulier op
   zin = $("#formZin").val();
   letterafstand = $("#formLetterafstand").val();
-  let penNibKeuze = $("#formPenNibSelectie").val();
+  penNibKeuze = $("#formPenNibSelectie").val();
+};
 
-  // ----------------------------------------------------
-  // BEREKEN ZINSLENGTE
+// ----------------------------------------------------
+// BEREKEN ZINSLENGTE
 
+function berekenZinslengte() {
   // Zoek penNibKeuze op in penNibMap en haal bijbehorende multiplier op
   penNib = penNibMap.get(penNibKeuze);
 
@@ -111,21 +117,32 @@ $("#knopZinBerekenen").on("click", function() {
   // Nee:
     // Alert met welk karakter niet voorkomt in map
 
-  for (i=0; i<zin.length; i++) {
-    if (karakterMap.has(zin.charAt(i))) {
-      zinLengte += (karakterMap.get(zin.charAt(i))*penNib);
-      zinBerekening += (karakterMap.get(zin.charAt(i))*penNib + " ");
-    } else {
-      alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
-    }
-  };
+// Test berekening afronden karakterbreedtes naar .5 of .0
+for (i = 0; i < zin.length; i++) {
+  if (karakterMap.has(zin.charAt(i))) {
+    // Bereken breedte character bij gekozen pen nib
+    let charBreedte = karakterMap.get(zin.charAt(i)) * penNib;
+    // Controleer of characterbreedte afgerond moet worden
+    if ((charBreedte * 10) % 1 !== 0) {
+      // Voeg 0.25 toe aan charbreedte als niet .5 of .0
+      charBreedte += 0.25;
+    };
+
+    zinLengte += charBreedte;
+    zinBerekening += (charBreedte + "_");
+  } else {
+    alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
+  }
+};
 
   // Voeg letter ruimte toe (# karakters -1) * letterAfstand
   zinLengte += letterafstand * (zin.length - 1);
+};
 
-  // ----------------------------------------------------
-  // HTML OUTPUT
+// ----------------------------------------------------
+// HTML OUTPUT
 
+function outputHTML() {
   // Vul de zin eigenschappen en berekeningen in bij HTML output
   $("#zinTekst").text(zin);
   $("#zinPenNib").text(penNibKeuze);
@@ -133,4 +150,15 @@ $("#knopZinBerekenen").on("click", function() {
   $("#zinLengte").text(zinLengte);
   $("#zinLengteHalf").text(zinLengte*0.5);
   $("#zinBerekening").text(zinBerekening);
+};
+
+// ====================================================
+// KNOP INSTELLINGEN
+// ====================================================
+
+$("#knopZinBerekenen").on("click", function() {
+  resetInvoer();
+  opslaanInvoer();
+  berekenZinslengte();
+  outputHTML();
 });
