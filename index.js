@@ -66,6 +66,8 @@ let letterAfstand = 2.5
 
 let zinLetterAfstand = 0
 
+let penNibKeuze = ""
+
 // Tekst van zin
 let zin = ""
 
@@ -83,22 +85,26 @@ let zinBerekening = ""
 // ZINSLENGTE BEREKENING VAN INGEVOERDE TEKST
 // ----------------------------------------------------
 
-$("#knopZinBerekenen").on("click", function() {
-  // ----------------------------------------------------
-  // VARIABELEN OPSLAAN UIT FORMULIER
-
+function resetInvoer() {
   // Reset zinlengte en berekening
   zinLengte = 0;
   zinBerekening = "";
+};
 
+// ----------------------------------------------------
+// VARIABELEN OPSLAAN UIT FORMULIER
+
+function opslaanInvoer() {
   // Sla ingevulde waarden uit formulier op
   zin = $("#formZin").val();
   letterafstand = $("#formLetterafstand").val();
-  let penNibKeuze = $("#formPenNibSelectie").val();
+  penNibKeuze = $("#formPenNibSelectie").val();
+};
 
-  // ----------------------------------------------------
-  // BEREKEN ZINSLENGTE
+// ----------------------------------------------------
+// BEREKEN ZINSLENGTE
 
+function berekenZinslengte() {
   // Zoek penNibKeuze op in penNibMap en haal bijbehorende multiplier op
   penNib = penNibMap.get(penNibKeuze);
 
@@ -122,10 +128,12 @@ $("#knopZinBerekenen").on("click", function() {
 
   // Voeg letter ruimte toe (# karakters -1) * letterAfstand
   zinLengte += letterafstand * (zin.length - 1);
+};
 
-  // ----------------------------------------------------
-  // HTML OUTPUT
+// ----------------------------------------------------
+// HTML OUTPUT
 
+function outputHTML() {
   // Vul de zin eigenschappen en berekeningen in bij HTML output
   $("#zinTekst").text(zin);
   $("#zinPenNib").text(penNibKeuze);
@@ -133,4 +141,15 @@ $("#knopZinBerekenen").on("click", function() {
   $("#zinLengte").text(zinLengte);
   $("#zinLengteHalf").text(zinLengte*0.5);
   $("#zinBerekening").text(zinBerekening);
+};
+
+// ====================================================
+// KNOP INSTELLINGEN
+// ====================================================
+
+$("#knopZinBerekenen").on("click", function() {
+  resetInvoer();
+  opslaanInvoer();
+  berekenZinslengte();
+  outputHTML();
 });
