@@ -58,7 +58,7 @@
       <table>
         <tr>
           <td><label for="formZin">Zin:</label></td>
-          <td><input type="text" name="formZin" id="formZin"></td>
+          <td><textarea name="formZin" id="formZin" rows="1"></textarea></td>
         </tr>
         <tr>
           <td><label for="">Letterafstand [mm]:</label></td>
@@ -83,33 +83,14 @@
       <button id="knopZinBerekenen" type="button" name="knopZinBerekenen">Zin berekenen</button>
     </form>
 
-    <p><strong>Zin berekeningen</strong></p>
-    <table>
-      <tr>
-        <td>Tekst:</td>
-        <td id="zinTekst"></td>
-      </tr>
-      <tr>
-        <td>Pen nib:</td>
-        <td id="zinPenNib"></td>
-      </tr>
-      <tr>
-        <td>Letterafstand:</td>
-        <td id="zinLetterafstand"></td>
-      </tr>
-      <tr>
-        <td>Lengte:</td>
-        <td id="zinLengte"></td>
-      </tr>
-      <tr>
-        <td>1/2 lengte:</td>
-        <td id="zinLengteHalf"></td>
-      </tr>
-      <tr>
-        <td>Lengte / karakter:</td>
-        <td id="zinBerekening"></td>
-      </tr>
-    </table>
+<hr>
+
+<h2>Zin berekeningen</h2>
+
+<div id="berekeningenLijst">
+
+</div>
+
 
     <!-- Link naar jQuery Google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
