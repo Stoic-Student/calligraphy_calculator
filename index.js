@@ -77,6 +77,9 @@ let zinLengte = 0
 // Uitgeschreven berekening
 let zinBerekening = ""
 
+// Startcoordinaten van karakters
+let startCoordinaten = ""
+
 // ----------------------------------------------------
 // OVERIGE VARIABELEN
 // ----------------------------------------------------
@@ -100,6 +103,7 @@ function resetInvoer() {
   zinLengte = 0;
   zinBerekening = "";
   berekeningPrint = "";
+  startCoordinaten = "";
 };
 
 // ----------------------------------------------------
@@ -139,8 +143,17 @@ for (i = 0; i < zin.length; i++) {
       charBreedte += 0.25;
     };
 
+    // Voeg 0 toe als eerste startcoordinaat
+    if (zinLengte === 0) {
+      startCoordinaten += "0_"
+    } else {
+      // Voeg charBreedte + totale letterafstand toe aan startcoordinaten
+      startCoordinaten += (zinLengte + (letterAfstand*i))+"_"
+    };
+
     zinLengte += charBreedte;
     zinBerekening += (charBreedte + "_");
+
   } else {
     alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
   }
@@ -170,7 +183,7 @@ function genereerHTMLOutput() {
   // Lengte per karakter zonder spaties
   berekeningPrint += "<tr><td>Lengte / karakter:</td><td>"+zinBerekening+"</td></tr>"
   // Karakter coordinaten
-  berekeningPrint += "<tr><td>Startcoordinaten:</td><td></td></tr>"
+  berekeningPrint += "<tr><td>Startcoordinaten:</td><td>"+startCoordinaten+"</td></tr>"
 
   // Sluit tabel
   berekeningPrint += "</table><hr>"
