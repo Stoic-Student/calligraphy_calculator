@@ -11,7 +11,7 @@
 const karakter1 = ["i", "j", "1", "!", ".", ","]
 const karakter2_5 = ["f", "l", "t", "I"]
 const karakter3 = [" "]
-const karakter3_5 = ["a", "b", "c", "d", "e", "g", "h", "k", "n", "o", "p", "q", "r", "s", "u", "v", "0", "2", "3", "4", "5", "6", "7", "8", "9", "?", "-"]
+const karakter3_5 = ["a", "b", "c", "d", "e", "g", "h", "k", "n", "o", "p", "q", "r", "s", "u", "v", "x", "y", "z", "0", "2", "3", "4", "5", "6", "7", "8", "9", "?", "-"]
 const karakter4_5 = ["U", "V", "W"]
 const karakter5 = ["&", "J"]
 const karakter5_5 = ["N", "X"]
@@ -77,6 +77,16 @@ let zinLengte = 0
 // Uitgeschreven berekening
 let zinBerekening = ""
 
+// ----------------------------------------------------
+// OVERIGE VARIABELEN
+// ----------------------------------------------------
+
+// Telt aantal uitgevoerde berekeningen
+let berekeningNummer = 0
+
+// Te printen HTML voor berekening output
+let berekeningPrint = ""
+
 // ====================================================
 // BEREKENINGEN
 // ====================================================
@@ -89,6 +99,7 @@ function resetInvoer() {
   // Reset zinlengte en berekening
   zinLengte = 0;
   zinBerekening = "";
+  berekeningPrint = "";
 };
 
 // ----------------------------------------------------
@@ -140,17 +151,38 @@ for (i = 0; i < zin.length; i++) {
 };
 
 // ----------------------------------------------------
+// GENEREER HTML OUTPUT
+
+function genereerHTMLOutput() {
+  // Open tabel
+  berekeningPrint += "<table>"
+
+  // Rij met zin berekeningsnummer
+  berekeningPrint += "<tr><td><strong>Berekening:</strong></td><td>"+berekeningNummer+"</td></tr>"
+  // Rij met tekst van de zin
+  berekeningPrint += "<tr><td>Tekst:</td><td>"+zin+"</td></tr>"
+  // Pen nib keuze
+  berekeningPrint += "<tr><td>Pen nib:</td><td>"+penNibKeuze+"</td></tr>"
+  // letterafstand:
+  berekeningPrint += "<tr><td>Letterafstand:</td><td>"+letterafstand+"</td></tr>"
+  // Totale zinslengte + 1/2 zinlengte
+  berekeningPrint += "<tr><td>Zinlengte | (1/2):</td><td>"+zinLengte+" | "+zinLengte*0.5+"</td></tr>"
+  // Lengte per karakter zonder spaties
+  berekeningPrint += "<tr><td>Lengte / karakter:</td><td>"+zinBerekening+"</td></tr>"
+  // Karakter coordinaten
+  berekeningPrint += "<tr><td>Startcoordinaten:</td><td></td></tr>"
+
+  // Sluit tabel
+  berekeningPrint += "</table><hr>"
+};
+
+// ----------------------------------------------------
 // HTML OUTPUT
 
-function outputHTML() {
-  // Vul de zin eigenschappen en berekeningen in bij HTML output
-  $("#zinTekst").text(zin);
-  $("#zinPenNib").text(penNibKeuze);
-  $("#zinLetterafstand").text(letterafstand);
-  $("#zinLengte").text(zinLengte);
-  $("#zinLengteHalf").text(zinLengte*0.5);
-  $("#zinBerekening").text(zinBerekening);
-};
+function printHTML() {
+  // Zet de berekening in HTML op de pagina direct onder kopje Zin Berekeningen
+  $("#berekeningenLijst").append(berekeningPrint);
+}
 
 // ====================================================
 // KNOP INSTELLINGEN
@@ -158,7 +190,9 @@ function outputHTML() {
 
 $("#knopZinBerekenen").on("click", function() {
   resetInvoer();
+  berekeningNummer++;
   opslaanInvoer();
   berekenZinslengte();
-  outputHTML();
+  genereerHTMLOutput();
+  printHTML();
 });
