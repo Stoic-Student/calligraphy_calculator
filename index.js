@@ -62,7 +62,7 @@ let penNib = penNibMap.get("speedballC2")
 // ----------------------------------------------------
 
 // Ruimte in strokes tussen karakters (ook spaties) in mm (default 2.5 van C2 nib)
-let letterAfstand = 0
+let letterafstand = 0
 
 let penNibKeuze = ""
 
