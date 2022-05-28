@@ -147,7 +147,7 @@ for (i = 0; i < zin.length; i++) {
       startCoordinaten += "0_"
     } else {
       // Voeg charBreedte + totale letterafstand toe aan startcoordinaten
-      startCoordinaten += (zinLengte + (letterAfstand*i))+"_"
+      startCoordinaten += (zinLengte + (letterafstand*i))+"_"
     };
 
     zinLengte += charBreedte;
