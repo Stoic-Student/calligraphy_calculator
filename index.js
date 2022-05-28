@@ -62,9 +62,7 @@ let penNib = penNibMap.get("speedballC2")
 // ----------------------------------------------------
 
 // Ruimte in strokes tussen karakters (ook spaties) in mm (default 2.5 van C2 nib)
-let letterAfstand = 2.5
-
-let zinLetterAfstand = 0
+let letterafstand = 0
 
 let penNibKeuze = ""
 
@@ -104,6 +102,7 @@ function resetInvoer() {
   zinBerekening = "";
   berekeningPrint = "";
   startCoordinaten = "";
+  letterafstand = 0;
 };
 
 // ----------------------------------------------------
@@ -148,7 +147,7 @@ for (i = 0; i < zin.length; i++) {
       startCoordinaten += "0_"
     } else {
       // Voeg charBreedte + totale letterafstand toe aan startcoordinaten
-      startCoordinaten += (zinLengte + (letterAfstand*i))+"_"
+      startCoordinaten += (zinLengte + (letterafstand*i))+"_"
     };
 
     zinLengte += charBreedte;
