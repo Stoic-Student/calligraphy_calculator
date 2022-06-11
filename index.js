@@ -145,14 +145,14 @@ for (i = 0; i < zin.length; i++) {
 
     // Voeg 0 toe als eerste startcoordinaat
     if (zinLengte === 0) {
-      startCoordinaten += "0_"
+      startCoordinaten += "0 · "
     } else {
       // Voeg charBreedte + totale letterafstand toe aan startcoordinaten
-      startCoordinaten += (zinLengte + (letterafstand*i))+"_"
+      startCoordinaten += (zinLengte + (letterafstand*i))+" · "
     };
 
     zinLengte += charBreedte;
-    zinBerekening += (charBreedte + "_");
+    zinBerekening += (charBreedte + " · ");
 
   } else {
     alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
