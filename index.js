@@ -53,6 +53,7 @@ penNibMap.set("speedballC1", 2.5);
 penNibMap.set("speedballC2", 2);
 penNibMap.set("speedballC3", 1.5);
 penNibMap.set("speedballC4", 1);
+penNibMap.set("speedballC5", 0.5);
 
 // Standaard geselecteerde pen nib (C-2)
 let penNib = penNibMap.get("speedballC2")
