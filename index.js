@@ -208,6 +208,10 @@ function printHTML() {
   $("#berekeningenLijst").prepend(berekeningPrint);
 }
 
+function clearOutput() {
+  $("#berekeningenLijst").empty();
+}
+
 // ====================================================
 // KNOP INSTELLINGEN
 // ====================================================
@@ -219,4 +223,8 @@ $("#knopZinBerekenen").on("click", function() {
   berekenZinslengte();
   genereerHTMLOutput();
   printHTML();
+});
+
+$("#knopClearOutput").on("click", function() {
+  clearOutput();
 });
