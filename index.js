@@ -188,7 +188,7 @@ function genereerHTMLOutput() {
   // Pen nib keuze
   berekeningPrint += "<tr><td>Pen nib:</td><td>"+penNibKeuze+"</td></tr>"
   // letterafstand:
-  berekeningPrint += "<tr><td>Letterafstand:</td><td>"+letterafstand+"</td></tr>"
+  berekeningPrint += "<tr><td>Letter / Woordafstand:</td><td>"+letterafstand+" | "+woordafstand+"</td></tr>"
   // Totale zinslengte + 1/2 zinlengte
   berekeningPrint += "<tr><td>Zinlengte | (1/2):</td><td>"+zinLengte+" | "+zinLengte*0.5+"</td></tr>"
   // Lengte per karakter zonder spaties
@@ -205,7 +205,11 @@ function genereerHTMLOutput() {
 
 function printHTML() {
   // Zet de berekening in HTML op de pagina direct onder kopje Zin Berekeningen
-  $("#berekeningenLijst").append(berekeningPrint);
+  $("#berekeningenLijst").prepend(berekeningPrint);
+}
+
+function clearOutput() {
+  $("#berekeningenLijst").empty();
 }
 
 // ====================================================
@@ -219,4 +223,8 @@ $("#knopZinBerekenen").on("click", function() {
   berekenZinslengte();
   genereerHTMLOutput();
   printHTML();
+});
+
+$("#knopClearOutput").on("click", function() {
+  clearOutput();
 });

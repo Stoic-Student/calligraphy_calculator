@@ -20,12 +20,12 @@
       <thead>
         <tr>
           <th align="left">Pen nib</th>
-          <th>Letterafstand [mm]</th>
-          <th>Stroke breedte [mm]</th>
-          <th>Woordafstand [mm]</th>
+          <th>Letterafstand</th>
+          <th>Stroke breedte</th>
+          <th>Woordafstand</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="vertical-border">
         <tr>
           <td>Speedball C-0</td>
           <td align="center">4</td>
@@ -71,7 +71,7 @@
       <table>
         <tr>
           <td><label for="formZin">Zin:</label></td>
-          <td><textarea name="formZin" id="formZin" rows="1"></textarea></td>
+          <td><textarea name="formZin" id="formZin" rows="1" cols="50"></textarea></td>
         </tr>
         <tr>
           <td><label for="">Letterafstand [mm]:</label></td>
@@ -98,7 +98,8 @@
         </tr>
       </table>
       <br>
-      <button id="knopZinBerekenen" type="button" name="knopZinBerekenen">Zin berekenen</button>
+      <button id="knopZinBerekenen" type="button" name="knopZinBerekenen" class="enterKnop">Zin berekenen</button>
+      <button id="knopClearOutput" type="button" name="knopClearOutput" class="clearKnop">Reset output</button>
     </form>
 
 <hr>
