@@ -205,7 +205,7 @@ function genereerHTMLOutput() {
 
 function printHTML() {
   // Zet de berekening in HTML op de pagina direct onder kopje Zin Berekeningen
-  $("#berekeningenLijst").append(berekeningPrint);
+  $("#berekeningenLijst").prepend(berekeningPrint);
 }
 
 // ====================================================
