@@ -1,0 +1,11 @@
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  border: none;
+}
+
+.vertical-border td {
+  border-right: solid 1px black;
+}
