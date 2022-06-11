@@ -115,6 +115,9 @@ function opslaanInvoer() {
   // Sla ingevulde waarden uit formulier op
   zin = $("#formZin").val();
   letterafstand = $("#formLetterafstand").val();
+  letterafstand = parseFloat(letterafstand);
+  woordafstand = $("#formWoordafstand").val();
+  woordafstand = parseFloat(woordafstand);
   penNibKeuze = $("#formPenNibSelectie").val();
 };
 
@@ -155,6 +158,12 @@ for (i = 0; i < zin.length; i++) {
 
     zinLengte += charBreedte;
     zinBerekening += (charBreedte + " · ");
+
+  } else if (zin.charAt(i) === " ") {
+    // Bij spatie karakters
+    startCoordinaten += (zinLengte + (letterafstand*i))+" # ";
+    zinLengte += woordafstand;
+    zinBerekening += (woordafstand + " # ");
 
   } else {
     alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
