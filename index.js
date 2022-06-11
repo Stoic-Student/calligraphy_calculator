@@ -10,7 +10,6 @@
 // Getal na array naam = aantal strokes per character
 const karakter1 = ["i", "j", "1", "!", ".", ","]
 const karakter2_5 = ["f", "l", "t", "I"]
-const karakter3 = [" "]
 const karakter3_5 = ["a", "b", "c", "d", "e", "g", "h", "k", "n", "o", "p", "q", "r", "s", "u", "v", "x", "y", "z", "0", "2", "3", "4", "5", "6", "7", "8", "9", "?", "-"]
 const karakter4_5 = ["U", "V", "W"]
 const karakter5 = ["&", "J"]
@@ -21,7 +20,7 @@ const karakter7_5 = ["M", "W"]
 const karakter8 = ["G", "O", "Q"]
 
 // Array met alle karakter arrays
-const karakters = [karakter1, karakter2_5, karakter3, karakter3_5, karakter4_5, karakter5, karakter5_5, karakter6, karakter7, karakter7_5, karakter8]
+const karakters = [karakter1, karakter2_5, karakter3_5, karakter4_5, karakter5, karakter5_5, karakter6, karakter7, karakter7_5, karakter8]
 
 // Stroke breedte van karakters per array
 const karakterBreedte = [1, 2.5, 3, 3.5, 4.5, 5, 5.5, 6, 7, 7.5, 8]
@@ -65,6 +64,8 @@ let penNib = penNibMap.get("speedballC2")
 // Ruimte in strokes tussen karakters (ook spaties) in mm (default 2.5 van C2 nib)
 let letterafstand = 0
 
+let woordafstand = 0
+
 let penNibKeuze = ""
 
 // Tekst van zin
@@ -104,6 +105,7 @@ function resetInvoer() {
   berekeningPrint = "";
   startCoordinaten = "";
   letterafstand = 0;
+  woordafstand = 0;
 };
 
 // ----------------------------------------------------
@@ -113,6 +115,9 @@ function opslaanInvoer() {
   // Sla ingevulde waarden uit formulier op
   zin = $("#formZin").val();
   letterafstand = $("#formLetterafstand").val();
+  letterafstand = parseFloat(letterafstand);
+  woordafstand = $("#formWoordafstand").val();
+  woordafstand = parseFloat(woordafstand);
   penNibKeuze = $("#formPenNibSelectie").val();
 };
 
@@ -153,6 +158,12 @@ for (i = 0; i < zin.length; i++) {
 
     zinLengte += charBreedte;
     zinBerekening += (charBreedte + " · ");
+
+  } else if (zin.charAt(i) === " ") {
+    // Bij spatie karakters
+    startCoordinaten += (zinLengte + (letterafstand*i))+" # ";
+    zinLengte += woordafstand;
+    zinBerekening += (woordafstand + " # ");
 
   } else {
     alert("De zin bevat karakter: [" + zin.charAt(i) + "] . Daarvoor is geen lengte ingevoerd.")
