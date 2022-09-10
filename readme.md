@@ -8,13 +8,17 @@ Deze tool neemt de tekst, letterafstand en woordafstand als input en berekent de
 
 Voorlopig werkt het nog met een localhost server en localhost database. Start deze met de command line vanaf "/":
 
-cd c/users/dagmar/documents/github/calligraphy_calculator
+Vanaf laptop:<br>
+cd documents/github/calligraphy_calculator
 
 nodemon app.js
 
 ## Onderdelen
 
-- Bootstrap (CSS)
+- Nodemon (development tool)
 - Node.js / Express (server)
   - Bodyparser (module)
+  - jQuery (module)
 - EJS (HTML templating)
+- Bootstrap (CSS)
+- ... (database)
