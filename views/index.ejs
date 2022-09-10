@@ -1,7 +1,8 @@
 <%- include("header") -%>
 
-<h1>Kalligrafie calculator v1.2</h1>
-<p>Laatst geupdate: 11-06-2022</p>
+
+<h1>Kalligrafie calculator v1.3</h1>
+<p>Laatst geupdate: in progress</p>
 <h2>Blackletter</h2>
 
 <h3>Letter maten standaard (in mm)</h3>
@@ -56,26 +57,28 @@
 
 <h3>Bereken zin</h3>
 
-<form class="" action="index.html" method="post">
-  <table>
-    <tr>
-      <td><label for="formZin">Zin:</label></td>
-      <td><textarea name="formZin" id="formZin" rows="1" cols="50"></textarea></td>
-    </tr>
-    <tr>
-      <td><label for="">Letterafstand [mm]:</label></td>
-      <td><input type="number" name="formLetterafstand" id="formLetterafstand"></td>
-    </tr>
-    <tr>
-      <td><label for="">Woordafstand [mm]:</label></td>
-      <td><input type="number" name="formWoordafstand" id="formWoordafstand"></td>
-    </tr>
-    <tr>
-      <td><label for="formPenNibSelectie">Pen nib selectie:</label></td>
-      <td>
+<div class="container">
+
+  <form class="" action="index.html" method="post">
+    <div class="row">
+      <div class="col-12">
+        <label class="form-label" for="formZin">Tekst</label>
+        <textarea class="form-control" name="formZin" id="formZin" rows="1" cols="50"></textarea>
+      </div>
+
+      <div class="col-1">
+        <label class= "form-label" for="">Letterafstand</label>
+        <input class="form-control" type="number" name="formLetterafstand" id="formLetterafstand" placeholder="[mm]">
+      </div>
+      <div class="col-1">
+        <label class= "form-label" for="">Woordafstand</label>
+        <input class="form-control" type="number" name="formWoordafstand" id="formWoordafstand" placeholder="[mm]">
+      </div>
+      <div class="col-2">
+        <label class= "form-label" for="formPenNibSelectie">Pen nib selectie</label>
         <!-- Dropdown lijst om pen nib te selecteren -->
         <!-- Speedball C2 is standaard actief -->
-        <select class="" id="formPenNibSelectie">
+        <select class="form-select" class="" id="formPenNibSelectie">
           <option value="speedballC0">Speedball C0</option>
           <option value="speedballC1">Speedball C1</option>
           <option value="speedballC2" selected>Speedball C2</option>
@@ -83,13 +86,14 @@
           <option value="speedballC4">Speedball C4</option>
           <option value="speedballC5">Speedball C5</option>
         </select>
-      </td>
-    </tr>
-  </table>
-  <br>
-  <button id="knopZinBerekenen" type="button" name="knopZinBerekenen" class="enterKnop">Zin berekenen</button>
-  <button id="knopClearOutput" type="button" name="knopClearOutput" class="clearKnop">Reset output</button>
-</form>
+      </div>
+    </div>
+    <br>
+    <button id="knopZinBerekenen" type="submit" name="knopZinBerekenen" class="btn btn-primary">Zin berekenen</button>
+    <button id="knopClearOutput" type="button" name="knopClearOutput" class="btn btn-warning">Reset output</button>
+  </form>
+
+</div>
 
 <hr>
 
@@ -98,5 +102,7 @@
 <div id="berekeningenLijst">
 
 </div>
+
+
 
 <%- include("footer") -%>
