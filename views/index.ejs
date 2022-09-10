@@ -1,0 +1,102 @@
+<%- include("header") -%>
+
+<h1>Kalligrafie calculator v1.2</h1>
+<p>Laatst geupdate: 11-06-2022</p>
+<h2>Blackletter</h2>
+
+<h3>Letter maten standaard (in mm)</h3>
+<table>
+  <thead>
+    <tr>
+      <th align="left">Pen nib</th>
+      <th>Letterafstand</th>
+      <th>Stroke breedte</th>
+      <th>Woordafstand</th>
+    </tr>
+  </thead>
+  <tbody class="vertical-border">
+    <tr>
+      <td>Speedball C-0</td>
+      <td align="center">4</td>
+      <td align="center">3.5</td>
+      <td align="center">12.5</td>
+    </tr>
+    <tr>
+      <td>Speedball C-1</td>
+      <td align="center">3</td>
+      <td align="center">2.5</td>
+      <td align="center">9</td>
+    </tr>
+    <tr>
+      <td>Speedball C-2</td>
+      <td align="center">2.5</td>
+      <td align="center">2</td>
+      <td align="center">7</td>
+    </tr>
+    <tr>
+      <td>Speedball C-3</td>
+      <td align="center">2</td>
+      <td align="center">1.5</td>
+      <td align="center">5.5</td>
+    </tr>
+    <tr>
+      <td>Speedball C-4</td>
+      <td align="center">1.5</td>
+      <td align="center">1</td>
+      <td align="center">3.5</td>
+    </tr>
+    <tr>
+      <td>Speedball C-5</td>
+      <td align="center">1</td>
+      <td align="center">0.5</td>
+      <td align="center">2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Bereken zin</h3>
+
+<form class="" action="index.html" method="post">
+  <table>
+    <tr>
+      <td><label for="formZin">Zin:</label></td>
+      <td><textarea name="formZin" id="formZin" rows="1" cols="50"></textarea></td>
+    </tr>
+    <tr>
+      <td><label for="">Letterafstand [mm]:</label></td>
+      <td><input type="number" name="formLetterafstand" id="formLetterafstand"></td>
+    </tr>
+    <tr>
+      <td><label for="">Woordafstand [mm]:</label></td>
+      <td><input type="number" name="formWoordafstand" id="formWoordafstand"></td>
+    </tr>
+    <tr>
+      <td><label for="formPenNibSelectie">Pen nib selectie:</label></td>
+      <td>
+        <!-- Dropdown lijst om pen nib te selecteren -->
+        <!-- Speedball C2 is standaard actief -->
+        <select class="" id="formPenNibSelectie">
+          <option value="speedballC0">Speedball C0</option>
+          <option value="speedballC1">Speedball C1</option>
+          <option value="speedballC2" selected>Speedball C2</option>
+          <option value="speedballC3">Speedball C3</option>
+          <option value="speedballC4">Speedball C4</option>
+          <option value="speedballC5">Speedball C5</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <button id="knopZinBerekenen" type="button" name="knopZinBerekenen" class="enterKnop">Zin berekenen</button>
+  <button id="knopClearOutput" type="button" name="knopClearOutput" class="clearKnop">Reset output</button>
+</form>
+
+<hr>
+
+<h2>Zin berekeningen</h2>
+
+<div id="berekeningenLijst">
+
+</div>
+
+<%- include("footer") -%>

@@ -1,3 +1,6 @@
+// Berekeingen die de calculator uitvoert + gegevens die daarvoor nodig zijn.
+// Staat in directe verbinding met de HTML pagina (op dit moment)
+
 // ====================================================
 // CONSTANTEN EN STARTVARIABELEN
 // ====================================================
