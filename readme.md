@@ -26,3 +26,7 @@ nodemon app.js
 - EJS (HTML templating)
 - Bootstrap (CSS)
 - ... (database)
+
+## Database layout
+
+[Miro bord](https://miro.com/app/board/uXjVPSDJx-4=/)
