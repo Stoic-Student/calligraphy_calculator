@@ -30,3 +30,8 @@ nodemon app.js
 ## Database layout
 
 [Miro bord](https://miro.com/app/board/uXjVPSDJx-4=/)
+
+### Opties voor database version controls
+
+[Liquibase](https://docs.liquibase.com/install/tutorials/mysql.html)
+[DOLT](https://github.com/dolthub/dolt)
