@@ -11,9 +11,6 @@ Voorlopig werkt het nog met een localhost server en localhost database. Start de
 Vanaf laptop:<br>
 cd documents/github/calligraphy_calculator
 
-Vanaf PC:<br>
-cd d/dagmar/projects/calligraphy/'calligraphy calculator'
-
 Server opstarten:<br>
 nodemon app.js
 

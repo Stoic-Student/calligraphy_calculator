@@ -29,10 +29,6 @@ app.listen(port, () => {
   console.log("Calligraphy calculator local server listening on port " + port)
 });
 
-
-
-
-
 // ----------------------
 // ROUTES EN FUNCTIES
 // ----------------------
@@ -42,8 +38,4 @@ app.listen(port, () => {
 // Laad de home route
 app.get('/', function(req, res) {
   res.render('index');
-});
-
-app.post('/', function(req, res) {
-  console.log(req.body);
 });
