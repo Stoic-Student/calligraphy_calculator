@@ -50,6 +50,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
+  console.log("Ingevoerde gegevens voor bereking zin zijn:")
   console.log(req.body);
 });
 
@@ -61,6 +62,6 @@ connection.query(zoekPenNibs, (error, results, fields) => {
     if (error) {
       return console.error(error.message);
     }
-    console.log("Test zoekresultaten zijn:");
+    console.log("Pen nib zoekresultaten zijn:");
     console.log(results);
   });
