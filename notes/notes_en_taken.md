@@ -17,8 +17,11 @@
 
 - [ ] Maak object met output waarden
 - [ ] Geef array met zulke objecten door aan index.ejs
-- [] Laat EJS dit object tonen met een re-render opdracht
-  ^ hiermee bezig; moet pauzeren; gebleven bij: zorg dat EJS variabele accepteert. Nu nog 'not defined' (al snap ik niet wat ik anders doe)
+- [/] Laat EJS dit object tonen met een re-render opdracht
+  ^^^ dit kan niet met EJS. Gebruik jQuery met event handlers ;-)
+  ^^^ jQuery werkt niet hetzelfde vanaf een server (niet 1 op 1 zoals vanuit javascript)
+
+- Verwerk outputs in een object met een object generator(?)
 
 ## Vul invulformulier in met gegevens uit de database
 

@@ -10,7 +10,11 @@ const app = express();
 const path = require("path");
 const port = 3000;
 const bodyParser = require("body-parser");
-const $ = require("jquery");
+
+  // Stuff for JQuery
+const jsdom = require("jsdom");
+const dom = new jsdom.JSDOM("");
+const $ = require("jquery")(dom.window);
 
 // MySQL Database requirements
 const mysql = require("mysql");
@@ -44,21 +48,21 @@ sqlConnect();
 
 // HOME ROUTE
 
-// Disabled while testing
-
 // Laad de home route
 app.get("/", function(req, res) {
   res.render("index");
 });
 
 app.post('/', function(req, res) {
-  console.log("Ingevoerde gegevens voor bereking zin zijn:")
+  console.log("Ingevoerde gegevens voor berekening zin zijn:")
   console.log(req.body);
 });
 
 // ----------------------
 // TESTING / TIJDELIJK (opschonen bij issue resolve)
 // ----------------------
+
+
 
 let zoekPenNibs = 'SELECT * FROM pen_nibs';
 
@@ -77,33 +81,24 @@ const outputArray = [];
 
 // Deze output waarden worden gebruikt door index.ejs per berekening
 let testOutput = {
-  tekst: ""
+  tekst: "test tekst", // Dit is gelijk aan de input tekst
+  penNibId: "sb_c-2", // Dit is de pen nib ID gekozen bij de berekening
+  letterAfstand: 2, // Dit is de letter afstand; als niet ingevuld, dan default uit database
+  woordAfstand: 7, // Dit is de woord afstand; als niet ingevuld, dan default uit database
+  zinslengte: 40, // Dit is de berekende zinslengte
+  zinslengteHalf: 20, // Dit is de berekende zinslengte gedeeld door twee
+  karakterTabel: "" // Nog besluiten hoe dit aangeleverd gaat worden
 };
 
 outputArray.push(testOutput);
 
-console.log("Informatie in outputArray:")
-console.log(outputArray);
+// console.log("Informatie in outputArray:")
+// console.log(outputArray);
 
-// Laad de home route
-app.get("/", function(req, res) {
-  res.render("index", {berekening: testOutput});
-});
+function printOutput() {
+  $("#berekeningenLijst").html("<p>outputArray</p>")
+}
 
-app.post("/", function(req, res) {
-  console.log("Ingevoerde gegevens voor bereking zin zijn:")
-  console.log(req.body);
-
-  // Deze output waarden worden gebruikt door index.ejs per berekening
-  testOutput = {
-    tekst: "test tekst", // Dit is gelijk aan de input tekst
-    penNibId: "sb_c-2", // Dit is de pen nib ID gekozen bij de berekening
-    letterAfstand: 2, // Dit is de letter afstand; als niet ingevuld, dan default uit database
-    woordAfstand: 7, // Dit is de woord afstand; als niet ingevuld, dan default uit database
-    zinslengte: 40, // Dit is de berekende zinslengte
-    zinslengteHalf: 20, // Dit is de berekende zinslengte gedeeld door twee
-    karakterTabel: "" // Nog besluiten hoe dit aangeleverd gaat worden
-  };
-
-  res.render("index", {berekening: testOutput});
+$("#testKnop").on("click", function() {
+  $("#testID").html("<p>outputArray</p>")
 });
