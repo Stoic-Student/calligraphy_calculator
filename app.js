@@ -52,3 +52,15 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
   console.log(req.body);
 });
+
+
+
+let zoekPenNibs = 'SELECT * FROM pen_nibs';
+
+connection.query(zoekPenNibs, (error, results, fields) => {
+    if (error) {
+      return console.error(error.message);
+    }
+    console.log("Test zoekresultaten zijn:");
+    console.log(results);
+  });
