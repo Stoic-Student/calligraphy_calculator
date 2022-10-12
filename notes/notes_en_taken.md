@@ -1,27 +1,26 @@
 # To Do voor Calligraphy Tool
 
-- [v] Roll back laatste merge met main, zodat tool bruikbaar blijft terwijl ik aan de update werk
-
-## Verbind met database
-
-- [v] Schema maken in MySQL workbench
-- [v] Verbinden met server zoals bij LH Product Database
-- [v] Informatie invullen in database
-
 ## Redesign input / output berekening zin (#34)
 
-- [ ] Input op HTML:
-  - [ ] Tekst als string
-  - [ ] Pen nib dropdown selectie
-  - [ ] Handmatige invoer letterafstand
-  - [ ] Handmatige invoer woordafstand
+- [v] Input op HTML:
+  - [v] Tekst als string
+  - [v] Pen nib dropdown selectie
+  - [v] Handmatige invoer letterafstand
+  - [v] Handmatige invoer woordafstand
 - [ ] Output in HTML:
   - [ ] Zinslengte | 1/2 zinslengte
-  - [ ] Tabel met
+  - [ ] Tabel met <!-- Kan een array van objecten zijn, ipv HTML. Dan met EJS uitwerken tot tabel -->
     - [ ] Karakters
     - [ ] Karakterlengtes
     - [ ] Startcoordinaten
   - [ ] MD tabel net als HTML tabel
+
+- [ ] Maak object met output waarden
+- [ ] Geef array met zulke objecten door aan index.ejs
+- [] Laat EJS dit object tonen met een re-render opdracht
+  ^ hiermee bezig; moet pauzeren; gebleven bij: zorg dat EJS variabele accepteert. Nu nog 'not defined' (al snap ik niet wat ik anders doe)
+
+## Vul invulformulier in met gegevens uit de database
 
 -----------
 

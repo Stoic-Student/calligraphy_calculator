@@ -44,9 +44,11 @@ sqlConnect();
 
 // HOME ROUTE
 
+// Disabled while testing
+
 // Laad de home route
-app.get('/', function(req, res) {
-  res.render('index');
+app.get("/", function(req, res) {
+  res.render("index");
 });
 
 app.post('/', function(req, res) {
@@ -54,14 +56,54 @@ app.post('/', function(req, res) {
   console.log(req.body);
 });
 
-
+// ----------------------
+// TESTING / TIJDELIJK (opschonen bij issue resolve)
+// ----------------------
 
 let zoekPenNibs = 'SELECT * FROM pen_nibs';
 
-connection.query(zoekPenNibs, (error, results, fields) => {
-    if (error) {
-      return console.error(error.message);
-    }
-    console.log("Pen nib zoekresultaten zijn:");
-    console.log(results);
-  });
+// Nog even niet nodig (tijdelijk disabled)
+
+// connection.query(zoekPenNibs, (error, results, fields) => {
+//     if (error) {
+//       return console.error(error.message);
+//     }
+//     console.log("Pen nib zoekresultaten zijn:");
+//     console.log(results);
+//   });
+
+// Sla hierin de output objecten op voor index.ejs
+const outputArray = [];
+
+// Deze output waarden worden gebruikt door index.ejs per berekening
+let testOutput = {
+  tekst: ""
+};
+
+outputArray.push(testOutput);
+
+console.log("Informatie in outputArray:")
+console.log(outputArray);
+
+// Laad de home route
+app.get("/", function(req, res) {
+  res.render("index", {berekening: testOutput});
+});
+
+app.post("/", function(req, res) {
+  console.log("Ingevoerde gegevens voor bereking zin zijn:")
+  console.log(req.body);
+
+  // Deze output waarden worden gebruikt door index.ejs per berekening
+  testOutput = {
+    tekst: "test tekst", // Dit is gelijk aan de input tekst
+    penNibId: "sb_c-2", // Dit is de pen nib ID gekozen bij de berekening
+    letterAfstand: 2, // Dit is de letter afstand; als niet ingevuld, dan default uit database
+    woordAfstand: 7, // Dit is de woord afstand; als niet ingevuld, dan default uit database
+    zinslengte: 40, // Dit is de berekende zinslengte
+    zinslengteHalf: 20, // Dit is de berekende zinslengte gedeeld door twee
+    karakterTabel: "" // Nog besluiten hoe dit aangeleverd gaat worden
+  };
+
+  res.render("index", {berekening: testOutput});
+});
