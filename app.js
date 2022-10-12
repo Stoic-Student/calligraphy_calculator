@@ -12,6 +12,12 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const $ = require("jquery");
 
+// MySQL Database requirements
+const mysql = require("mysql");
+const config = require(__dirname + "/config.js");
+const connection = mysql.createConnection(config);
+const sqlConnect = require(__dirname + "/sql-connect.js");
+
 // Body Parser setup
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -29,9 +35,8 @@ app.listen(port, () => {
   console.log("Calligraphy calculator local server listening on port " + port)
 });
 
-
-
-
+// Maak verbinding met SQL database
+sqlConnect();
 
 // ----------------------
 // ROUTES EN FUNCTIES
