@@ -27,7 +27,10 @@
 - Hoe kan de server deze dan verwerken en terugsturen?
   - Mogelijk iets met jQuery (wat nu werkt)
 
-- [ ] Bekijk [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp)
+- [X] Bekijk [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp)
+- [X] Bekijk [Fetch API (W3Schools)](https://www.w3schools.com/js/js_api_fetch.asp)
+- [X] [Fetch API (Hubspot)](https://blog.hubspot.com/website/javascript-fetch-api)
+- [ ] [Gebruik fetch met een formulier](https://www.youtube.com/watch?v=TTf0mMl0Sc4)
 
 ## Vul invulformulier in met gegevens uit de database
 
