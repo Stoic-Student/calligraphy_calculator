@@ -42,35 +42,31 @@
     <div class="row">
       <div class="col-12">
         <label class="form-label" for="formZin">Tekst</label>
-        <textarea class="form-control" name="formZin" id="formZin" rows="1" cols="50"></textarea>
+        <textarea class="form-control" name="formulierTekst" rows="1" cols="50"></textarea>
       </div>
 
       <div class="col-2">
         <label class= "form-label" for="">Letterafstand</label>
-        <input class="form-control" type="number" name="formLetterafstand" id="formLetterafstand" placeholder="[mm]">
+        <input class="form-control" type="number" name="formulierLetterafstand" placeholder="[mm]">
       </div>
       <div class="col-2">
         <label class= "form-label" for="">Woordafstand</label>
-        <input class="form-control" type="number" name="formWoordafstand" id="formWoordafstand" placeholder="[mm]">
+        <input class="form-control" type="number" name="formulierWoordafstand" placeholder="[mm]">
       </div>
       <div class="col-3">
         <label class= "form-label" for="formPenNibSelectie">Pen nib selectie</label>
         <!-- Dropdown lijst om pen nib te selecteren -->
-        <!-- Speedball C2 is standaard actief -->
-        <select class="form-select" class="" id="formPenNibSelectie">
-          <option value="speedballC0">Speedball C0</option>
-          <option value="speedballC1">Speedball C1</option>
-          <option value="speedballC2" selected>Speedball C2</option>
-          <option value="speedballC3">Speedball C3</option>
-          <option value="speedballC4">Speedball C4</option>
-          <option value="speedballC5">Speedball C5</option>
+        <select class="form-select" name="formulierPenNibID">
+          <% for(var penNib in penNibInfo) { %>
+            <option value= "<%= penNibInfo[penNib].id %>"><%= penNibInfo[penNib].naam %></option>
+          <% } %>
         </select>
       </div>
     </div>
     <br>
-    <button type="submit" name="knopZinBerekenen" class="btn btn-primary" id="knopZinBerekenen">Zin berekenen</button>
-    <button type="button" name="knopClearOutput" class="btn btn-warning">Reset output</button>
-    <button type="button" name="testKnop" class="btn btn-primary" id="testKnop">Test functie</button>
+    <button type="submit" class="btn btn-primary" id="knopZinBerekenen">Zin berekenen</button>
+    <button type="reset" class="btn btn-warning">Reset output</button>
+    <button type="button" class="btn btn-primary" id="testKnop">Test functie</button>
   </form>
 
 </div>

@@ -94,10 +94,6 @@ app.get("/", function(req, res) {
   res.render("index", {
     penNibInfo: penNibDatabase
   });
-  console.log(penNibDatabase)
-  // for(var property in penNibDatabase){
-  //   console.log(`${property}: letterafstand: ${penNibDatabase[property].letterafstand}`);
-  //  }
 });
 
 app.post('/', function(req, res) {

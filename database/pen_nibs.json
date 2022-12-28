@@ -1,35 +1,41 @@
 {
   "speedball C-0": {
+    "id": "speedball_c-0",
     "naam": "Speedball C-0",
     "letterafstand": 4,
     "strokeBreedte": 3.5,
     "woordafstand": 12.5
   },
   "speelball C-1": {
+    "id": "speedball_c-1",
     "naam": "Speedball C-1",
     "letterafstand": 3,
     "strokeBreedte": 2.5,
     "woordafstand": 9
   },
   "speelball C-2": {
+    "id": "speedball_c-2",
     "naam": "Speedball C-2",
     "letterafstand": 2.5,
     "strokeBreedte": 2,
     "woordafstand": 7
   },
   "speelball C-3": {
+    "id": "speedball_c-3",
     "naam": "Speedball C-3",
     "letterafstand": 2,
     "strokeBreedte": 1.5,
     "woordafstand": 5.5
   },
   "speelball C-4": {
+    "id": "speedball_c-4",
     "naam": "Speedball C-4",
     "letterafstand": 1.5,
     "strokeBreedte": 1,
     "woordafstand": 3.5
   },
   "speelball C-5": {
+    "id": "speedball_c-5",
     "naam": "Speedball C-5",
     "letterafstand": 1,
     "strokeBreedte": 0.5,
