@@ -21,7 +21,13 @@
   ^^^ dit kan niet met EJS. Gebruik jQuery met event handlers ;-)
   ^^^ jQuery werkt niet hetzelfde vanaf een server (niet 1 op 1 zoals vanuit javascript)
 
-- Verwerk outputs in een object met een object generator(?)
+### Hoe voeg je nieuwe info van de server toe aan bestaande webpagina zonder te herladen?
+
+- Met de form.post ontvangt de server de info uit het formulier
+- Hoe kan de server deze dan verwerken en terugsturen?
+  - Mogelijk iets met jQuery (wat nu werkt)
+
+- [ ] Bekijk [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp)
 
 ## Vul invulformulier in met gegevens uit de database
 
