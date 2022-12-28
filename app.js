@@ -42,21 +42,9 @@ app.listen(port, () => {
 // Maak verbinding met SQL database
 sqlConnect();
 
-// ----------------------
-// ROUTES EN FUNCTIES
-// ----------------------
+// DATABASE VERBINDINGEN
 
-// HOME ROUTE
-
-// Laad de home route
-app.get("/", function(req, res) {
-  res.render("index");
-});
-
-app.post('/', function(req, res) {
-  console.log("Ingevoerde gegevens voor berekening zin zijn:")
-  console.log(req.body);
-});
+const penNibDatabase = require(__dirname + "/database/pen_nibs.json")
 
 // ----------------------
 // TESTING / TIJDELIJK (opschonen bij issue resolve)
@@ -95,10 +83,24 @@ outputArray.push(testOutput);
 // console.log("Informatie in outputArray:")
 // console.log(outputArray);
 
-function printOutput() {
-  $("#berekeningenLijst").html("<p>outputArray</p>")
-}
+// ----------------------
+// ROUTES EN FUNCTIES
+// ----------------------
 
-$("#testKnop").on("click", function() {
-  $("#testID").html("<p>outputArray</p>")
+// HOME ROUTE
+
+// Laad de home route
+app.get("/", function(req, res) {
+  res.render("index", {
+    penNibInfo: penNibDatabase
+  });
+  console.log(penNibDatabase)
+  // for(var property in penNibDatabase){
+  //   console.log(`${property}: letterafstand: ${penNibDatabase[property].letterafstand}`);
+  //  }
+});
+
+app.post('/', function(req, res) {
+  console.log("Ingevoerde gegevens voor berekening zin zijn:")
+  console.log(req.body);
 });

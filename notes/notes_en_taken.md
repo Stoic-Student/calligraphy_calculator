@@ -25,6 +25,10 @@
 
 ## Vul invulformulier in met gegevens uit de database
 
+- ik denk eraan om de database niet te gebruiken.
+  - Het is mogelijk onnodig ingewikkeld voor deze tool.
+  - JSON files werken waarschijnlijk ook voor dezelfde functionaliteit en zijn over te dragen met GitHub
+
 -----------
 
 # Ideëen

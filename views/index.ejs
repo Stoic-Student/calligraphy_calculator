@@ -20,43 +20,15 @@
           <th>Woordafstand</th>
         </tr>
       </thead>
-      <tbody class="vertical-border">
-        <tr>
-          <td>Speedball C-0</td>
-          <td>4</td>
-          <td>3.5</td>
-          <td>12.5</td>
-        </tr>
-        <tr>
-          <td>Speedball C-1</td>
-          <td>3</td>
-          <td>2.5</td>
-          <td>9</td>
-        </tr>
-        <tr>
-          <td>Speedball C-2</td>
-          <td>2.5</td>
-          <td>2</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>Speedball C-3</td>
-          <td>2</td>
-          <td>1.5</td>
-          <td>5.5</td>
-        </tr>
-        <tr>
-          <td>Speedball C-4</td>
-          <td>1.5</td>
-          <td>1</td>
-          <td>3.5</td>
-        </tr>
-        <tr>
-          <td>Speedball C-5</td>
-          <td>1</td>
-          <td>0.5</td>
-          <td>2</td>
-        </tr>
+      <tbody>
+        <% for(var penNib in penNibInfo) { %>
+          <tr>
+            <td><%= penNibInfo[penNib].naam %></td>
+            <td><%= penNibInfo[penNib].letterafstand %></td>
+            <td><%= penNibInfo[penNib].strokeBreedte %></td>
+            <td><%= penNibInfo[penNib].woordafstand %></td>
+          </tr>
+        <% } %>
       </tbody>
     </table>
   </div>
@@ -73,15 +45,15 @@
         <textarea class="form-control" name="formZin" id="formZin" rows="1" cols="50"></textarea>
       </div>
 
-      <div class="col-1">
+      <div class="col-2">
         <label class= "form-label" for="">Letterafstand</label>
         <input class="form-control" type="number" name="formLetterafstand" id="formLetterafstand" placeholder="[mm]">
       </div>
-      <div class="col-1">
+      <div class="col-2">
         <label class= "form-label" for="">Woordafstand</label>
         <input class="form-control" type="number" name="formWoordafstand" id="formWoordafstand" placeholder="[mm]">
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <label class= "form-label" for="formPenNibSelectie">Pen nib selectie</label>
         <!-- Dropdown lijst om pen nib te selecteren -->
         <!-- Speedball C2 is standaard actief -->
@@ -98,7 +70,7 @@
     <br>
     <button type="submit" name="knopZinBerekenen" class="btn btn-primary" id="knopZinBerekenen">Zin berekenen</button>
     <button type="button" name="knopClearOutput" class="btn btn-warning">Reset output</button>
-    <button type="button" name="testKnop" class="btn btn-primary" id="knopTest">Test functie</button>
+    <button type="button" name="testKnop" class="btn btn-primary" id="testKnop">Test functie</button>
   </form>
 
 </div>
