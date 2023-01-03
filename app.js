@@ -30,16 +30,34 @@ app.set("view engine", "ejs");
 
 // Notification that server is active
 app.listen(port, () => {
-  console.log("Calligraphy calculator local server listening on port " + port)
+  console.log("Kalligrafietool is live op local host server port " + port)
 });
 
 // DATABASE VERBINDINGEN
 
 const penNibDatabase = require(__dirname + "/database/pen_nibs.json")
+const karakterDatabase = require(__dirname + "/database/karakters.json")
+
+// MAPS MAKEN
+
+const karakterMap = new Map();
+
+for (let property in karakterDatabase) {
+  let karakterBreedte = `${karakterDatabase[property].breedte}`;
+  let karakterArray = `${karakterDatabase[property].karakters}`;
+  console.log(karakterBreedte)
+  console.log(karakterArray)
+  for (let i = 0; i < karakterArray.length; i++) {
+    karakterMap.set(karakterArray[i], karakterBreedte)
+  }
+}
+console.log(karakterMap)
 
 // ----------------------
 // TESTING / TIJDELIJK (opschonen bij issue resolve)
 // ----------------------
+
+
 
 // ----------------------
 // ROUTES EN FUNCTIES

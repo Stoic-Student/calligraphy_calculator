@@ -1,0 +1,42 @@
+{
+  "type_1": {
+    "breedte": 1,
+    "karakters": ["i", "j", "1", "!", ".", ","]
+  }, 
+  "type_2": {
+    "breedte": 2,
+    "karakters": ["f", "l", "t", "I"]
+  },
+  "type_3": {
+    "breedte": 3.5,
+    "karakters": ["a", "b", "c", "d", "e", "g", "h", "k", "n", "o", "p", "q", "r", "s", "u", "v", "x", "y", "z", "0", "2", "3", "4", "5", "6", "7", "8", "9", "?", "-"]
+  },
+  "type_4": {
+    "breedte": 4.5,
+    "karakters": ["U", "V", "W"]
+  },
+  "type_5": {
+    "breedte": 5,
+    "karakters": ["&", "J"]
+  },
+  "type_6": {
+    "breedte": 5.5,
+    "karakters": ["N", "X"]
+  },
+  "type_7": {
+    "breedte": 6,
+    "karakters": ["m", "w", "B", "D", "E", "F", "H", "K", "L", "P", "R"]
+  },
+  "type_8": {
+    "breedte": 7,
+    "karakters": ["A", "S", "W", "C", "T"]
+  },
+  "type_9": {
+    "breedte": 7.5,
+    "karakters": ["M", "W"]
+  },
+  "type_10": {
+    "breedte": 8,
+    "karakters": ["G", "O", "Q"]
+  }
+}
