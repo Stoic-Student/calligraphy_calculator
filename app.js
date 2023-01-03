@@ -57,4 +57,5 @@ app.get("/", function(req, res) {
 app.post('/', function(req, res) {
   console.log("Ingevoerde gegevens voor berekening zin zijn:")
   console.log(req.body);
+  res.send({response: 'data ontvangen', data: req.body})
 });

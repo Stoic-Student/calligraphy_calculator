@@ -22,5 +22,10 @@ Loop door een object eigenschappen zoals een forEach loop bij Arrays:
 De req.body van een formulier met method="post" gebruikt de <input name="[naam]"> om de informatie op te halen.
 Alle <input> elementen hebben dus een name waarde nodig om geregistreerd te worden.
 
+## Post formulier data met Fetch API
 
+[Tutorial over formulieren en fetch API](https://openjavascript.info/2022/04/26/post-form-data-using-javascripts-fetch-api/)
 
+Je kan de submit knop functie herschrijven, zodat het formulier naar de server gaat en de pagina niet wordt herladen, maar wel kan reageren op de informatie die daarna van de server komt.
+
+Gebruik de URL encoded form data om de server een goede req.body te geven.
