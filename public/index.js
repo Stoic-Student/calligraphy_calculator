@@ -20,17 +20,19 @@ formulier.addEventListener('submit', function (e) {
     body: payload,
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      toonResultaatBerekening(data.data)
+    .then(resJSON => {
+      console.log("Ontvangen informatie van server")
+      console.log(resJSON);
+      toonResultaatBerekening(resJSON.berekening)
     })
     .catch(err => console.log(err));
 })
 
-function toonResultaatBerekening(resultaat) {
-  console.log(resultaat)
-  let resultaatObject = resultaat;
-  for (let property in resultaatObject) {
-    $("#berekeningenLijst").append("<p>"+`${property}: ${resultaatObject[property]}`+"</p>")
+function toonResultaatBerekening(berekening) {
+  console.log("Berekening object")
+  console.log(berekening)
+  let berekeningObject = berekening;
+  for (let property in berekeningObject) {
+    $("#berekeningenLijst").append("<p>"+`${property}: ${berekeningObject[property]}`+"</p>")
   }
 }

@@ -33,31 +33,60 @@ app.listen(port, () => {
   console.log("Kalligrafietool is live op local host server port " + port)
 });
 
-// DATABASE VERBINDINGEN
+// CONSTANTEN
+
+const karakterMap = new Map();
+
+  // DATABASE VERBINDINGEN
 
 const penNibDatabase = require(__dirname + "/database/pen_nibs.json")
 const karakterDatabase = require(__dirname + "/database/karakters.json")
 
-// MAPS MAKEN
+// OPSLAG VARIABELEN
 
-const karakterMap = new Map();
+let formulierInformatieObject = {
+  // ingevulde gegevens zijn om te testen
+  formulierTekst: 'test string',
+  formulierLetterafstand: '9',
+  formulierWoordafstand: '2',
+  formulierPenNibID: 'speedball_c-3'
+};
 
-for (let property in karakterDatabase) {
-  let karakterBreedte = `${karakterDatabase[property].breedte}`;
-  let karakterArray = `${karakterDatabase[property].karakters}`;
-  console.log(karakterBreedte)
-  console.log(karakterArray)
-  for (let i = 0; i < karakterArray.length; i++) {
-    karakterMap.set(karakterArray[i], karakterBreedte)
-  }
-}
-console.log(karakterMap)
+let berekeningObject = {} // Hierin komt de info die de server terugstuurt
 
 // ----------------------
 // TESTING / TIJDELIJK (opschonen bij issue resolve)
 // ----------------------
 
+async function verwerkFormulierInformatie() {
+  // Sla formulier informatie op in variabelen
+  berekeningObject = formulierInformatieObject;
+    
+  // Zet strings om naar numbers
+  berekeningsObject.letterafstand = parseFloat(formulierLetterafstand);
+  berekeningsObject.woordafstand = parseFloat(formulierWoordafstand);
 
+  // Maak de karakter map met ingevulde gegevens
+
+  // Bereken de outputs
+
+  
+}
+
+// KARAKTER MAP MAKEN
+
+function maakKarakterMap() {
+  for (let property in karakterDatabase) {
+    let karakterBreedte = `${karakterDatabase[property].breedte}`;
+    let karakterArray = `${karakterDatabase[property].karakters}`;
+    console.log(karakterBreedte)
+    console.log(karakterArray)
+    for (let i = 0; i < karakterArray.length; i++) {
+      karakterMap.set(karakterArray[i], karakterBreedte)
+    }
+  }
+  console.log(karakterMap)
+}
 
 // ----------------------
 // ROUTES EN FUNCTIES
@@ -72,8 +101,15 @@ app.get("/", function(req, res) {
   });
 });
 
-app.post('/', function(req, res) {
+app.post('/', async function(req, res) {
+  // Sla informatie uit het formulier op
+  formulierInformatieObject = req.body;  
   console.log("Ingevoerde gegevens voor berekening zin zijn:")
-  console.log(req.body);
-  res.send({response: 'data ontvangen', data: req.body})
+  console.log(formulierInformatieObject);
+
+  await verwerkFormulierInformatie();
+  // Stuur outputs door naar webpagina
+  res.send({berekening: berekeningObject})
+  console.log("Informatie verstuurd naar webpagina")
+  console.log(berekeningObject)
 });
