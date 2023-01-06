@@ -54,19 +54,34 @@ let formulierInformatieObject = {
 
 let berekeningObject = {} // Hierin komt de info die de server terugstuurt
 
+let gekozenPenNib = {} // Sla hierin de database pen nib info op van gekozen pen nib uit formulier
+
 // ----------------------
 // TESTING / TIJDELIJK (opschonen bij issue resolve)
 // ----------------------
 
 async function verwerkFormulierInformatie() {
   // Sla formulier informatie op in variabelen
-  berekeningObject = formulierInformatieObject;
-    
-  // Zet strings om naar numbers
-  berekeningObject.letterafstand = parseFloat(berekeningObject.formulierLetterafstand);
-  berekeningObject.woordafstand = parseFloat(berekeningObject.formulierWoordafstand);
+  berekeningObject.tekst = formulierInformatieObject.formulierTekst;  
+
+    // Zet strings om naar numbers
+  berekeningObject.letterafstand = Number(formulierInformatieObject.formulierLetterafstand);
+  berekeningObject.woordafstand = Number(formulierInformatieObject.formulierWoordafstand);
+
+  // Haal pen nib informatie op uit pen_nibs.json
+  for(var penNib in penNibDatabase) {
+    console.log(penNibDatabase[penNib])
+    if (penNibDatabase[penNib].id === formulierInformatieObject.formulierPenNibID) {
+      gekozenPenNib = penNibDatabase[penNib]
+    }
+  }
+  berekeningObject.penNib = gekozenPenNib;
+
+  console.log(berekeningObject)
 
   // Maak de karakter map met ingevulde gegevens
+    // Gebruik pen nib stroke breedte + karakterbreedte om karaktergrootte te bepalen
+
 
   // Bereken de outputs
 
@@ -103,9 +118,11 @@ app.get("/", function(req, res) {
 
 app.post('/', async function(req, res) {
   // Sla informatie uit het formulier op
-  formulierInformatieObject = req.body;  
-  console.log("Ingevoerde gegevens voor berekening zin zijn:")
-  console.log(formulierInformatieObject);
+
+  // Voor testen ophaalfunctie uitgezet
+  // formulierInformatieObject = req.body;  
+  // console.log("Ingevoerde gegevens voor berekening zin zijn:")
+  // console.log(formulierInformatieObject);
 
   await verwerkFormulierInformatie();
   // Stuur outputs door naar webpagina
