@@ -11,6 +11,14 @@ const $ = require("jquery")(dom.window);
 jQuery werkt vanaf een public .js file.
 Zet de file met jQuery code in de public folder (die de server ook kent), zoals normaal.
 
+# HTML file laden met jQuery
+
+```js
+$("DOM element").load("test_file.html")
+```
+Dit plaatst de hele HTML file binnen het geselecteerde element.
+Dit kan ook met ajax gecombineerd worden, maar ik weet niet goed hoe je dit toepast.
+
 # Loop van object properties
 
 Loop door een object eigenschappen zoals een forEach loop bij Arrays:

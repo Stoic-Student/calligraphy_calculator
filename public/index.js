@@ -28,11 +28,32 @@ formulier.addEventListener('submit', function (e) {
     .catch(err => console.log(err));
 })
 
+let berekeningNummer = 0;
+
 function toonResultaatBerekening(berekening) {
+  berekeningNummer++;
   console.log("Berekening object")
   console.log(berekening)
-  let berekeningObject = berekening;
-  for (let property in berekeningObject) {
-    $("#berekeningenLijst").append("<p>"+`${property}: ${berekeningObject[property]}`+"</p>")
+  let berekeningObject = berekening; // Gebruik deze variabele als je met de database gaat werken
+
+  // Gebruik tijdelijke variabele om HTML output in te stellen
+  const testBerekeningObject = {
+    tekst: "test zin",
+    pen_nib: "speedball C-2",
+    letterafstand: 2.5,
+    woordafstand: 7,
+    zinlengteHeel: 56,
+    zinlengteHalf: 28,
+    lengtePerKarakter: [5,5,5,5,7,5,3,5],
+    startcoordinaten: [0,7,14,21,30,37,42,49]
   }
+  stelHTMLSamenVoorBerekeningOutput()
+  // for (let property in testBerekeningObject) {
+  //   $("#berekeningenLijst").append("<p>"+`${property}: ${testBerekeningObject[property]}`+"</p>")
+  // }
+}
+
+function stelHTMLSamenVoorBerekeningOutput() {
+  $("#berekeningenLijst").prepend("<div id='"+berekeningNummer+"'></div>")
+  $("#"+berekeningNummer).load("test_file.html") // Laadt de complete HMTL code uit de test_file.html
 }

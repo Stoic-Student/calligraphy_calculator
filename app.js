@@ -63,8 +63,8 @@ async function verwerkFormulierInformatie() {
   berekeningObject = formulierInformatieObject;
     
   // Zet strings om naar numbers
-  berekeningsObject.letterafstand = parseFloat(formulierLetterafstand);
-  berekeningsObject.woordafstand = parseFloat(formulierWoordafstand);
+  berekeningObject.letterafstand = parseFloat(berekeningObject.formulierLetterafstand);
+  berekeningObject.woordafstand = parseFloat(berekeningObject.formulierWoordafstand);
 
   // Maak de karakter map met ingevulde gegevens
 
