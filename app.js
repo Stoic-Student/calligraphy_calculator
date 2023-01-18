@@ -86,6 +86,9 @@ async function verwerkFormulierInformatie() {
   maakKarakterMap(berekeningObject.penNib.strokeBreedte, berekeningObject.woordafstand)
 
   let tekstlengte = 0;
+  let karaktersInZinArray = [];
+  let karakterLengteArray  = [];
+  let karakterStartCoordinatenArray = [];
 
   // Bereken de outputs voor de ingevulde tekst
   for (let i = 0; i < berekeningObject.tekst.length; i++) {
@@ -93,6 +96,8 @@ async function verwerkFormulierInformatie() {
     // Tijdelijke opslag lengte van karakter op plaats i
     let lengteVanKarakter = karakterMap.get(berekeningObject.tekst.charAt(i));
 
+    // Vul startcoordinaten in bij output tabel arrays
+    karakterStartCoordinatenArray.push(tekstlengte)
     // Voeg lengte van karakter toe aan tekstlengte
     tekstlengte += lengteVanKarakter
     
@@ -100,15 +105,18 @@ async function verwerkFormulierInformatie() {
     if ((i+1) < berekeningObject.tekst.length) {
       tekstlengte += berekeningObject.letterafstand
     }
-    
-    
 
+    // Vul karakter en karakterlengte in bij output tabel arrays
+    karaktersInZinArray.push(berekeningObject.tekst[i])
+    karakterLengteArray.push(lengteVanKarakter)
+    
     console.log(berekeningObject.tekst[i] +" = "+ lengteVanKarakter +" > totale lengte = "+ tekstlengte)
 
   }
   berekeningObject.tekstlengte = tekstlengte
-  
-
+  berekeningObject.karakterArray = karaktersInZinArray
+  berekeningObject.karakterLengteArray = karakterLengteArray
+  berekeningObject.karakterStartCoordinatenArray = karakterStartCoordinatenArray
 }
 
 // ----------------------
