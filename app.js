@@ -35,24 +35,34 @@ app.listen(port, () => {
 
 // CONSTANTEN
 
-const karakterMap = new Map();
+// const karakterMap = new Map();
 
   // DATABASE VERBINDINGEN
 
 const penNibDatabase = require(__dirname + "/database/pen_nibs.json")
 const karakterDatabase = require(__dirname + "/database/karakters.json")
 
+// FUNCTIE MODULES
+
+const karakterMapModule = require(__dirname + "/eigen_modules/karakter_map_maken.js")
+const maakKarakterMap = karakterMapModule.maakKarakterMap
+const karakterMap = karakterMapModule.karakterMap
+
+const outputInfoOpstellen = require(__dirname + "/eigen_modules/bereken_zin.js")
+
 // OPSLAG VARIABELEN
 
 let formulierInformatieObject = {
   // ingevulde gegevens zijn om te testen
   formulierTekst: 'test string',
-  formulierLetterafstand: '9',
-  formulierWoordafstand: '2',
+  formulierLetterafstand: '2',
+  formulierWoordafstand: '9',
   formulierPenNibID: 'speedball_c-3'
 };
 
 let berekeningObject = {} // Hierin komt de info die de server terugstuurt
+
+let gekozenPenNib = {} // Sla hierin de database pen nib info op van gekozen pen nib uit formulier
 
 // ----------------------
 // TESTING / TIJDELIJK (opschonen bij issue resolve)
@@ -60,32 +70,24 @@ let berekeningObject = {} // Hierin komt de info die de server terugstuurt
 
 async function verwerkFormulierInformatie() {
   // Sla formulier informatie op in variabelen
-  berekeningObject = formulierInformatieObject;
-    
-  // Zet strings om naar numbers
-  berekeningObject.letterafstand = parseFloat(berekeningObject.formulierLetterafstand);
-  berekeningObject.woordafstand = parseFloat(berekeningObject.formulierWoordafstand);
+  berekeningObject.tekst = formulierInformatieObject.formulierTekst;  
 
-  // Maak de karakter map met ingevulde gegevens
+    // Zet strings om naar numbers
+  berekeningObject.letterafstand = Number(formulierInformatieObject.formulierLetterafstand);
+  berekeningObject.woordafstand = Number(formulierInformatieObject.formulierWoordafstand);
 
-  // Bereken de outputs
-
-  
-}
-
-// KARAKTER MAP MAKEN
-
-function maakKarakterMap() {
-  for (let property in karakterDatabase) {
-    let karakterBreedte = `${karakterDatabase[property].breedte}`;
-    let karakterArray = `${karakterDatabase[property].karakters}`;
-    console.log(karakterBreedte)
-    console.log(karakterArray)
-    for (let i = 0; i < karakterArray.length; i++) {
-      karakterMap.set(karakterArray[i], karakterBreedte)
+  // Haal pen nib informatie op uit pen_nibs.json
+  for(var penNib in penNibDatabase) {
+    if (penNibDatabase[penNib].id === formulierInformatieObject.formulierPenNibID) {
+      berekeningObject.penNib = penNibDatabase[penNib]
     }
   }
-  console.log(karakterMap)
+
+  // Maak de karakter map met ingevulde gegevens
+    // Gebruik pen nib stroke breedte + karakterbreedte om karaktergrootte te bepalen
+  maakKarakterMap(berekeningObject.penNib.strokeBreedte, berekeningObject.woordafstand)
+
+  outputInfoOpstellen(berekeningObject, karakterMap)
 }
 
 // ----------------------
@@ -103,9 +105,11 @@ app.get("/", function(req, res) {
 
 app.post('/', async function(req, res) {
   // Sla informatie uit het formulier op
-  formulierInformatieObject = req.body;  
-  console.log("Ingevoerde gegevens voor berekening zin zijn:")
-  console.log(formulierInformatieObject);
+
+  // Voor testen ophaalfunctie uitgezet
+  // formulierInformatieObject = req.body;  
+  // console.log("Ingevoerde gegevens voor berekening zin zijn:")
+  // console.log(formulierInformatieObject);
 
   await verwerkFormulierInformatie();
   // Stuur outputs door naar webpagina

@@ -25,6 +25,13 @@ Loop door een object eigenschappen zoals een forEach loop bij Arrays:
 
 [MDN webdocs over "for...in"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
 
+~~~js
+const object = {prop1: "string", prop2: 20}
+for(let property in object) {
+    // Functie die voor iedere property in het object moet worden uitgevoerd
+}
+~~~
+
 # Posts van formulieren naar server
 
 De req.body van een formulier met method="post" gebruikt de <input name="[naam]"> om de informatie op te halen.
