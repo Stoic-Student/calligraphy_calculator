@@ -1,8 +1,4 @@
 {
-  "type_1": {
-    "breedte": 1,
-    "karakters": ["i", "j", "1", "!", ".", ","]
-  }, 
   "type_2": {
     "breedte": 2,
     "karakters": ["f", "l", "t", "I"]
@@ -13,7 +9,7 @@
   },
   "type_4": {
     "breedte": 4.5,
-    "karakters": ["U", "V", "W"]
+    "karakters": ["U", "V"]
   },
   "type_5": {
     "breedte": 5,
@@ -29,7 +25,7 @@
   },
   "type_8": {
     "breedte": 7,
-    "karakters": ["A", "S", "W", "C", "T"]
+    "karakters": ["A", "S", "C", "T"]
   },
   "type_9": {
     "breedte": 7.5,
@@ -38,5 +34,9 @@
   "type_10": {
     "breedte": 8,
     "karakters": ["G", "O", "Q"]
+  },
+  "type_1": {
+    "breedte": 1,
+    "karakters": ["i", "j", "1", "!", ".", ","]
   }
 }

@@ -70,18 +70,17 @@ async function verwerkFormulierInformatie() {
 
   // Haal pen nib informatie op uit pen_nibs.json
   for(var penNib in penNibDatabase) {
-    console.log(penNibDatabase[penNib])
     if (penNibDatabase[penNib].id === formulierInformatieObject.formulierPenNibID) {
       gekozenPenNib = penNibDatabase[penNib]
     }
   }
   berekeningObject.penNib = gekozenPenNib;
 
-  console.log(berekeningObject)
+  // console.log(berekeningObject)
 
   // Maak de karakter map met ingevulde gegevens
     // Gebruik pen nib stroke breedte + karakterbreedte om karaktergrootte te bepalen
-
+  maakKarakterMap(gekozenPenNib.strokeBreedte, berekeningObject.letterafstand)
 
   // Bereken de outputs
 
@@ -90,15 +89,31 @@ async function verwerkFormulierInformatie() {
 
 // KARAKTER MAP MAKEN
 
-function maakKarakterMap() {
+function maakKarakterMap(penNibStrokeBreedte, letterafstand) {
   for (let property in karakterDatabase) {
+    // Sla breedte van karakters op in tijdelijke variabelen
     let karakterBreedte = `${karakterDatabase[property].breedte}`;
     let karakterArray = `${karakterDatabase[property].karakters}`;
-    console.log(karakterBreedte)
-    console.log(karakterArray)
+    // console.log(karakterBreedte)
+    // console.log(karakterArray)
+    // console.log(penNibStrokeBreedte)
+
     for (let i = 0; i < karakterArray.length; i++) {
-      karakterMap.set(karakterArray[i], karakterBreedte)
+      // Vermenigvuldig karakterbreedte met penNibBreedte
+      let berekendeKarakterBreedte = karakterBreedte * penNibStrokeBreedte
+
+      // Check of berekendeKarakterBreedte eindigt op .0 of .5
+      if ((berekendeKarakterBreedte * 10) % 1 !== 0) {
+        // Voeg 0.25 toe aan berekendeKarakterBreedte als niet .5 of .0
+        berekendeKarakterBreedte += 0.25;
+      };
+
+      // Sla ieder karakter met berekende breedte op in Map
+      karakterMap.set(karakterArray[i], berekendeKarakterBreedte)
     }
+
+    // Voeg spatie karakterbreedte toe aan Map
+    karakterMap.set(" ", letterafstand)
   }
   console.log(karakterMap)
 }
