@@ -1,8 +1,3 @@
-$("#testKnop").on("click", function () {
-  console.log("jQuery werkt!");
-  $("#berekeningenLijst").text("test zin")
-});
-
 
 
 const formulier = document.getElementById('formulierVoorZinBerekening');
@@ -36,24 +31,30 @@ function toonResultaatBerekening(berekening) {
   console.log(berekening)
   let berekeningObject = berekening; // Gebruik deze variabele als je met de database gaat werken
 
-  // Gebruik tijdelijke variabele om HTML output in te stellen
-  const testBerekeningObject = {
-    tekst: "test zin",
-    pen_nib: "speedball C-2",
-    letterafstand: 2.5,
-    woordafstand: 7,
-    zinlengteHeel: 56,
-    zinlengteHalf: 28,
-    lengtePerKarakter: [5,5,5,5,7,5,3,5],
-    startcoordinaten: [0,7,14,21,30,37,42,49]
-  }
-  stelHTMLSamenVoorBerekeningOutput()
+  stelHTMLSamenVoorBerekeningOutput(berekeningObject)
   // for (let property in testBerekeningObject) {
   //   $("#berekeningenLijst").append("<p>"+`${property}: ${testBerekeningObject[property]}`+"</p>")
   // }
+  $("#testKnop").on("click", function () {
+    vulBerekeningInfoIn(berekeningObject)
+  });
 }
 
 function stelHTMLSamenVoorBerekeningOutput() {
   $("#berekeningenLijst").prepend("<div id='"+berekeningNummer+"'></div>")
-  $("#"+berekeningNummer).load("test_file.html") // Laadt de complete HMTL code uit de test_file.html
+  // Laadt de complete HMTL code uit de test_file.html
+  $("#"+berekeningNummer).load("output_display.html") 
+}
+
+function vulBerekeningInfoIn(berekening) {
+  $("#berekeningTekst").text(berekening.tekst)
+  $("#berekeningPenNib").text(berekening.penNib.naam)
+  $("#berekeningLetterafstand").text(berekening.letterafstand)
+  $("#berekeningWoordafstand").text(berekening.woordafstand)
+  $("#berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
+  for (let i = 0; i < berekening.karakterArray.length; i++) {
+    $("#berekeningKarakterArray").append("<td>"+berekening.karakterArray[i]+"</td>")
+    $("#berekeningKarakterLengteArray").append("<td>"+berekening.karakterLengteArray[i]+"</td>")
+    $("#berekeningStartCoordinatenArray").append("<td>"+berekening.karakterStartCoordinatenArray[i]+"</td>")
+  }
 }
