@@ -35,12 +35,18 @@ app.listen(port, () => {
 
 // CONSTANTEN
 
-const karakterMap = new Map();
+// const karakterMap = new Map();
 
   // DATABASE VERBINDINGEN
 
 const penNibDatabase = require(__dirname + "/database/pen_nibs.json")
 const karakterDatabase = require(__dirname + "/database/karakters.json")
+
+// FUNCTIE MODULES
+
+const karakterMapModule = require(__dirname + "/eigen_modules/karakter_map_maken.js")
+const maakKarakterMap = karakterMapModule.maakKarakterMap
+const karakterMap = karakterMapModule.karakterMap
 
 // OPSLAG VARIABELEN
 
@@ -85,37 +91,6 @@ async function verwerkFormulierInformatie() {
   // Bereken de outputs
 
   
-}
-
-// KARAKTER MAP MAKEN
-
-function maakKarakterMap(penNibStrokeBreedte, letterafstand) {
-  for (let property in karakterDatabase) {
-    // Sla breedte van karakters op in tijdelijke variabelen
-    let karakterBreedte = `${karakterDatabase[property].breedte}`;
-    let karakterArray = `${karakterDatabase[property].karakters}`;
-    // console.log(karakterBreedte)
-    // console.log(karakterArray)
-    // console.log(penNibStrokeBreedte)
-
-    for (let i = 0; i < karakterArray.length; i++) {
-      // Vermenigvuldig karakterbreedte met penNibBreedte
-      let berekendeKarakterBreedte = karakterBreedte * penNibStrokeBreedte
-
-      // Check of berekendeKarakterBreedte eindigt op .0 of .5
-      if ((berekendeKarakterBreedte * 10) % 1 !== 0) {
-        // Voeg 0.25 toe aan berekendeKarakterBreedte als niet .5 of .0
-        berekendeKarakterBreedte += 0.25;
-      };
-
-      // Sla ieder karakter met berekende breedte op in Map
-      karakterMap.set(karakterArray[i], berekendeKarakterBreedte)
-    }
-
-    // Voeg spatie karakterbreedte toe aan Map
-    karakterMap.set(" ", letterafstand)
-  }
-  console.log(karakterMap)
 }
 
 // ----------------------
