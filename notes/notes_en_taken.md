@@ -15,11 +15,14 @@
     - [ ] Startcoordinaten
   - [ ] MD tabel net als HTML tabel
 
-- [ ] Maak object met output waarden
-- [ ] Geef array met zulke objecten door aan index.ejs
+- [v] Maak object met output waarden
+- [v] Geef array met zulke objecten door aan index.ejs
 - [/] Laat EJS dit object tonen met een re-render opdracht
   ^^^ dit kan niet met EJS. Gebruik jQuery met event handlers ;-)
   ^^^ jQuery werkt niet hetzelfde vanaf een server (niet 1 op 1 zoals vanuit javascript)
+
+- [ ] Stel tabellen layout netjes in met CSS
+- [ ] 
 
 ### Hoe voeg je nieuwe info van de server toe aan bestaande webpagina zonder te herladen?
 
