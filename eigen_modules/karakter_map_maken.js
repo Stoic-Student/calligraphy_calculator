@@ -33,7 +33,6 @@ function maakKarakterMap(penNibStrokeBreedte, letterafstand) {
     // Voeg spatie karakterbreedte toe aan Map
     karakterMap.set(" ", letterafstand)
   }
-  console.log(karakterMap)
 }
 
 module.exports = {

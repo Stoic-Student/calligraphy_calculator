@@ -53,8 +53,8 @@ const karakterMap = karakterMapModule.karakterMap
 let formulierInformatieObject = {
   // ingevulde gegevens zijn om te testen
   formulierTekst: 'test string',
-  formulierLetterafstand: '9',
-  formulierWoordafstand: '2',
+  formulierLetterafstand: '2',
+  formulierWoordafstand: '9',
   formulierPenNibID: 'speedball_c-3'
 };
 
@@ -77,20 +77,38 @@ async function verwerkFormulierInformatie() {
   // Haal pen nib informatie op uit pen_nibs.json
   for(var penNib in penNibDatabase) {
     if (penNibDatabase[penNib].id === formulierInformatieObject.formulierPenNibID) {
-      gekozenPenNib = penNibDatabase[penNib]
+      berekeningObject.penNib = penNibDatabase[penNib]
     }
   }
-  berekeningObject.penNib = gekozenPenNib;
-
-  // console.log(berekeningObject)
 
   // Maak de karakter map met ingevulde gegevens
     // Gebruik pen nib stroke breedte + karakterbreedte om karaktergrootte te bepalen
-  maakKarakterMap(gekozenPenNib.strokeBreedte, berekeningObject.letterafstand)
+  maakKarakterMap(berekeningObject.penNib.strokeBreedte, berekeningObject.woordafstand)
 
-  // Bereken de outputs
+  let tekstlengte = 0;
 
+  // Bereken de outputs voor de ingevulde tekst
+  for (let i = 0; i < berekeningObject.tekst.length; i++) {
+
+    // Tijdelijke opslag lengte van karakter op plaats i
+    let lengteVanKarakter = karakterMap.get(berekeningObject.tekst.charAt(i));
+
+    // Voeg lengte van karakter toe aan tekstlengte
+    tekstlengte += lengteVanKarakter
+    
+    // Voeg ruimte tussen karakters toe aan tekstlengte tot laatste karakter
+    if ((i+1) < berekeningObject.tekst.length) {
+      tekstlengte += berekeningObject.letterafstand
+    }
+    
+    
+
+    console.log(berekeningObject.tekst[i] +" = "+ lengteVanKarakter +" > totale lengte = "+ tekstlengte)
+
+  }
+  berekeningObject.tekstlengte = tekstlengte
   
+
 }
 
 // ----------------------
