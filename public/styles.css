@@ -1,0 +1,18 @@
+.karaktertabel {
+    table-layout: fixed;
+    width: 20%;
+    text-align: center;
+}
+
+.karaktertabel tr {
+    border: 1px solid;
+}
+
+.karaktertabel td {
+    border: 1px solid;
+    width: 1rem;
+}
+
+.outputkolom {
+    text-align: center;
+}
