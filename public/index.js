@@ -43,7 +43,7 @@ function toonResultaatBerekening(berekening) {
 function stelHTMLSamenVoorBerekeningOutput() {
   $("#berekeningenLijst").prepend("<div id='"+berekeningNummer+"'></div>")
   // Laadt de complete HMTL code uit de test_file.html
-  $("#"+berekeningNummer).load("output_display.html") 
+  $("#"+berekeningNummer).load("output_display.html")
 }
 
 function vulBerekeningInfoIn(berekening) {
@@ -52,11 +52,6 @@ function vulBerekeningInfoIn(berekening) {
   $("#berekeningLetterafstand").text(berekening.letterafstand)
   $("#berekeningWoordafstand").text(berekening.woordafstand)
   $("#berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
-  // for (let i = 0; i < berekening.karakterArray.length; i++) {
-  //   $("#berekeningKarakterArray").append("<td class='outputkolom'>"+berekening.karakterArray[i]+"</td>")
-  //   $("#berekeningKarakterLengteArray").append("<td class='outputkolom'>"+berekening.karakterLengteArray[i]+"</td>")
-  //   $("#berekeningStartCoordinatenArray").append("<td class='outputkolom'>"+berekening.karakterStartCoordinatenArray[i]+"</td>")
-  // }
   for (let i = 0; i < berekening.karakterArray.length; i++) {
     $("#karaktertabelOutput").append("<tr><td>"+berekening.karakterArray[i]+"</td><td>"+berekening.karakterLengteArray[i]+"</td><td>"+berekening.karakterStartCoordinatenArray[i]+"</td></tr>")
   }
