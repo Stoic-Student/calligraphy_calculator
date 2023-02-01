@@ -47,12 +47,13 @@ function stelHTMLSamenVoorBerekeningOutput() {
 }
 
 function vulBerekeningInfoIn(berekening) {
-  $(".berekeningTekst").text(berekening.tekst)
-  $(".berekeningPenNib").text(berekening.penNib.naam)
-  $(".berekeningLetterafstand").text(berekening.letterafstand)
-  $(".berekeningWoordafstand").text(berekening.woordafstand)
-  $(".berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
+  $("#"+berekeningNummer).find(".berekeningNummer").text(berekeningNummer)
+  $("#"+berekeningNummer).find(".berekeningTekst").text(berekening.tekst)
+  $("#"+berekeningNummer).find(".berekeningPenNib").text(berekening.penNib.naam)
+  $("#"+berekeningNummer).find(".berekeningLetterafstand").text(berekening.letterafstand)
+  $("#"+berekeningNummer).find(".berekeningWoordafstand").text(berekening.woordafstand)
+  $("#"+berekeningNummer).find(".berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
   for (let i = 0; i < berekening.karakterArray.length; i++) {
-    $(".karaktertabelOutput").append("<tr><td>"+berekening.karakterArray[i]+"</td><td>"+berekening.karakterLengteArray[i]+"</td><td>"+berekening.karakterStartCoordinatenArray[i]+"</td></tr>")
+    $("#"+berekeningNummer).find(".karaktertabelOutput").append("<tr><td>"+berekening.karakterArray[i]+"</td><td>"+berekening.karakterLengteArray[i]+"</td><td>"+berekening.karakterStartCoordinatenArray[i]+"</td></tr>")
   }
 }
