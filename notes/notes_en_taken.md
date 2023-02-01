@@ -22,7 +22,7 @@
   ^^^ jQuery werkt niet hetzelfde vanaf een server (niet 1 op 1 zoals vanuit javascript)
 
 - [ ] Stel tabellen layout netjes in met CSS
-- [ ] 
+- [ ] Splits karaktertabel functie op in HTML opstellen en toevoegen
 
 ### Hoe voeg je nieuwe info van de server toe aan bestaande webpagina zonder te herladen?
 
