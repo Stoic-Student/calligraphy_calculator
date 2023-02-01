@@ -47,12 +47,12 @@ function stelHTMLSamenVoorBerekeningOutput() {
 }
 
 function vulBerekeningInfoIn(berekening) {
-  $("#berekeningTekst").text(berekening.tekst)
-  $("#berekeningPenNib").text(berekening.penNib.naam)
-  $("#berekeningLetterafstand").text(berekening.letterafstand)
-  $("#berekeningWoordafstand").text(berekening.woordafstand)
-  $("#berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
+  $(".berekeningTekst").text(berekening.tekst)
+  $(".berekeningPenNib").text(berekening.penNib.naam)
+  $(".berekeningLetterafstand").text(berekening.letterafstand)
+  $(".berekeningWoordafstand").text(berekening.woordafstand)
+  $(".berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
   for (let i = 0; i < berekening.karakterArray.length; i++) {
-    $("#karaktertabelOutput").append("<tr><td>"+berekening.karakterArray[i]+"</td><td>"+berekening.karakterLengteArray[i]+"</td><td>"+berekening.karakterStartCoordinatenArray[i]+"</td></tr>")
+    $(".karaktertabelOutput").append("<tr><td>"+berekening.karakterArray[i]+"</td><td>"+berekening.karakterLengteArray[i]+"</td><td>"+berekening.karakterStartCoordinatenArray[i]+"</td></tr>")
   }
 }
