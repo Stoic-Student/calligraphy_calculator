@@ -53,7 +53,12 @@ function vulBerekeningInfoIn(berekening) {
   $("#"+berekeningNummer).find(".berekeningLetterafstand").text(berekening.letterafstand)
   $("#"+berekeningNummer).find(".berekeningWoordafstand").text(berekening.woordafstand)
   $("#"+berekeningNummer).find(".berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
-  for (let i = 0; i < berekening.karakterArray.length; i++) {
-    $("#"+berekeningNummer).find(".karaktertabelOutput").append("<tr><td>"+berekening.karakterArray[i]+"</td><td>"+berekening.karakterLengteArray[i]+"</td><td>"+berekening.karakterStartCoordinatenArray[i]+"</td></tr>")
+  
+  // Stel Tabel HTML op in variabele
+  let tabelHTML = "";
+  for (let index = 0; index < berekening.karakterArray.length; index++) {
+    tabelHTML += "<tr><td>"+berekening.karakterArray[index]+"</td><td>"+berekening.karakterLengteArray[index]+"</td><td>"+berekening.karakterStartCoordinatenArray[index]+"</td></tr>"
   }
+  // Vervang tabel inhoud door tabel HTML
+  $("#"+berekeningNummer).find(".karaktertabelOutput").html(tabelHTML)
 }
