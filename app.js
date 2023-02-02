@@ -107,9 +107,9 @@ app.post('/', async function(req, res) {
   // Sla informatie uit het formulier op
 
   // Voor testen ophaalfunctie uitgezet
-  // formulierInformatieObject = req.body;  
-  // console.log("Ingevoerde gegevens voor berekening zin zijn:")
-  // console.log(formulierInformatieObject);
+  formulierInformatieObject = req.body;  
+  console.log("Ingevoerde gegevens voor berekening zin zijn:")
+  console.log(formulierInformatieObject);
 
   await verwerkFormulierInformatie();
   // Stuur outputs door naar webpagina

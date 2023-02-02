@@ -1,3 +1,7 @@
+.berekeningtabel td {
+    padding-left: 8px;
+}
+
 .karaktertabel {
     table-layout: fixed;
     width: 20%;

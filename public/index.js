@@ -17,33 +17,32 @@ formulier.addEventListener('submit', function (e) {
     .then(res => res.json())
     .then(resJSON => {
       console.log("Ontvangen informatie van server")
-      console.log(resJSON);
-      toonResultaatBerekening(resJSON.berekening)
+      berekeningObject = resJSON.berekening
+      console.log("Berekening object")
+      console.log(berekeningObject);
+      toonResultaatBerekening(berekeningObject)
     })
+    .then(() => vulBerekeningInfoIn(berekeningObject))
     .catch(err => console.log(err));
 })
 
+let berekeningObject = {}
+
 let berekeningNummer = 0;
 
-function toonResultaatBerekening(berekening) {
+async function toonResultaatBerekening(berekening) {
   berekeningNummer++;
-  console.log("Berekening object")
-  console.log(berekening)
-  let berekeningObject = berekening; // Gebruik deze variabele als je met de database gaat werken
-
-  stelHTMLSamenVoorBerekeningOutput(berekeningObject)
-  // for (let property in testBerekeningObject) {
-  //   $("#berekeningenLijst").append("<p>"+`${property}: ${testBerekeningObject[property]}`+"</p>")
-  // }
-  $("#testKnop").on("click", function () {
-    vulBerekeningInfoIn(berekeningObject)
-  });
+  await stelHTMLSamenVoorBerekeningOutput()
+  vulBerekeningInfoIn(berekening)
 }
 
 function stelHTMLSamenVoorBerekeningOutput() {
   $("#berekeningenLijst").prepend("<div id='"+berekeningNummer+"'></div>")
   // Laadt de complete HMTL code uit de test_file.html
   $("#"+berekeningNummer).load("output_display.html")
+  $("#testKnop").on("click", function () {
+    vulBerekeningInfoIn(berekeningObject)
+  });
 }
 
 function vulBerekeningInfoIn(berekening) {
@@ -53,7 +52,7 @@ function vulBerekeningInfoIn(berekening) {
   $("#"+berekeningNummer).find(".berekeningLetterafstand").text(berekening.letterafstand)
   $("#"+berekeningNummer).find(".berekeningWoordafstand").text(berekening.woordafstand)
   $("#"+berekeningNummer).find(".berekeningZinlengte").html(berekening.tekstlengte+' | '+(berekening.tekstlengte / 2))
-  
+
   // Stel Tabel HTML op in variabele
   let tabelHTML = "";
   for (let index = 0; index < berekening.karakterArray.length; index++) {
